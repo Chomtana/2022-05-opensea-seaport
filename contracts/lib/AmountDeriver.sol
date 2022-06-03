@@ -110,6 +110,13 @@ contract AmountDeriver is AmountDerivationErrors {
             revert InexactFraction();
         }
 
+        // assembly {
+        //     if iszero(mulmod(value, numerator, denominator)) {
+        //         mstore(0, InexactFraction_error_signature)
+        //         revert(0, InexactFraction_error_len)
+        //     }
+        // }
+
         // Multiply the numerator by the value and ensure no overflow occurs.
         uint256 valueTimesNumerator = value * numerator;
 
